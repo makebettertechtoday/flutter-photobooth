@@ -51,7 +51,7 @@ class FooterMadeWithLink extends StatelessWidget {
             ),
           ),
           const TextSpan(
-            text: ' & ',
+            text: '',
           ),
           TextSpan(
             text: l10n.footerMadeWithFirebaseLinkText,

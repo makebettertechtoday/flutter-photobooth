@@ -61,38 +61,56 @@ class StickersView extends StatelessWidget {
                   ),
                   const CharactersLayer(),
                   const _DraggableStickers(),
-                  const Positioned(
-                    left: 15,
-                    top: 15,
+                  // const Positioned(
+                  //   left: 15,
+                  //   bottom: 15,
+                  //   child: Row(
+                  //     children: [
+                  //       _RetakeButton(),
+                  //       ClearStickersButtonLayer(),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const Align(
+                  //   alignment: Alignment.bottomCenter,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(bottom: 30),
+                  //     child: _RetakeButton(),
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   right: 15,
+                  //   top: 15,
+                  //   child: OpenStickersButton(
+                  //     onPressed: () {
+                  //       context
+                  //           .read<StickersBloc>()
+                  //           .add(const StickersDrawerToggled());
+                  //     },
+                  //   ),
+                  // ),
+                  // const Align(
+                  //   alignment: Alignment.bottomCenter,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(bottom: 30),
+                  //     child: _NextButton(),
+                  //   ),
+                  // ),
+                  const Align(
+                    alignment: Alignment.bottomCenter,
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         _RetakeButton(),
-                        ClearStickersButtonLayer(),
+                        _NextButton(),
                       ],
                     ),
                   ),
-                  Positioned(
-                    right: 15,
-                    top: 15,
-                    child: OpenStickersButton(
-                      onPressed: () {
-                        context
-                            .read<StickersBloc>()
-                            .add(const StickersDrawerToggled());
-                      },
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 30),
-                      child: _NextButton(),
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment.bottomCenter,
-                    child: _StickerReminderText(),
-                  )
+                  // const Align(
+                  //   alignment: Alignment.bottomCenter,
+                  //   child: _StickerReminderText(),
+                  // )
                 ],
               ),
             ),
