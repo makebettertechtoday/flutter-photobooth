@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'package:cross_file/cross_file.dart';
 
 import 'package:analytics/analytics.dart';
 import 'package:cross_file/cross_file.dart';
@@ -9,12 +10,20 @@ import 'package:io_photobooth/l10n/l10n.dart';
 import 'package:io_photobooth/photobooth/photobooth.dart';
 import 'package:io_photobooth/share/share.dart';
 import 'package:photobooth_ui/photobooth_ui.dart';
+import 'package:photos_repository/photos_repository.dart';
 
 class ShareBody extends StatelessWidget {
   const ShareBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    // final PhotosRepository photosRepository = PhotosRepository(
+    //   firebaseStorage: FirebaseStorage.instance,
+    //   // You can pass additional parameters as needed
+    // );
+
+    final textController = TextEditingController();
     final image = context.select((PhotoboothBloc bloc) => bloc.state.image);
     final file = context.select((ShareBloc bloc) => bloc.state.file);
     final compositeStatus = context.select(
@@ -35,7 +44,7 @@ class ShareBody extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const AnimatedPhotoIndicator(),
+          // const AnimatedPhotoIndicator(),
           AnimatedPhotoboothPhoto(image: image),
           if (compositeStatus.isSuccess)
             AnimatedFadeIn(
@@ -62,17 +71,67 @@ class ShareBody extends StatelessWidget {
                       ),
                       child: ShareCopyableLink(link: shareUrl),
                     ),
-                  if (compositedImage != null && file != null)
-                    ResponsiveLayoutBuilder(
-                      small: (_, __) => MobileButtonsLayout(
-                        image: compositedImage,
-                        file: file,
+                    // Add the TextField widget here
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 500,
+                        right: 500,
+                        bottom: 30,
                       ),
-                      large: (_, __) => DesktopButtonsLayout(
-                        image: compositedImage,
-                        file: file,
+                      child: TextField(
+                        controller: textController,
+                        style: TextStyle(
+                          color: Colors.white, // Set the text color to white
+                        ),
+                        decoration: InputDecoration(
+                          labelText: 'Phone Number or Email',
+                          labelStyle: TextStyle(color: Colors.white), // Set the label color to white
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white), // Set the border color to white
+                          ),
+                        ),
+                        // You can add more properties and functionality to the TextField as needed.
                       ),
                     ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        try {
+                          String textFieldValue = textController.text;
+                          print('Text from TextField: $textFieldValue');
+                          final photosRepository = BlocProvider.of<ShareBloc>(context).photosRepository;
+
+                          // final photosRepository = BlocProvider.of<PhotosRepository>(context);
+                          // print(file!.path);
+                          String filePath = file!.path;
+                          String fileName = filePath.split('/').last + ".png";
+                          // print('Filename: $fileName');
+
+                          Uint8List dataBytes = await file.readAsBytes();
+                          // Assuming `compositedImage` and `fileName` are available
+                          final shareUrls = await photosRepository.sharePhoto(
+                            fileName: fileName,
+                            data: dataBytes,
+                            shareText: 'Share it',
+                          );
+                          // Do something with the `shareUrls`, if needed
+                        } catch (error) {
+                          // Handle any errors that occur during the upload process
+                          print('Error uploading photo: $error');
+                        }
+                      },
+                      child: Text('Submit'),
+                    ),
+                  // if (compositedImage != null && file != null)
+                  //   ResponsiveLayoutBuilder(
+                  //     small: (_, __) => MobileButtonsLayout(
+                  //       image: compositedImage,
+                  //       file: file,
+                  //     ),
+                  //     large: (_, __) => DesktopButtonsLayout(
+                  //       image: compositedImage,
+                  //       file: file,
+                  //     ),
+                  //   ),
                   const SizedBox(height: 28),
                   if (isUploadSuccess)
                     ConstrainedBox(

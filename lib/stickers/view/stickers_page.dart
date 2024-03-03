@@ -239,14 +239,14 @@ class _NextButton extends StatelessWidget {
           key: const Key('stickersPage_next_inkWell'),
           onTap: () async {
             final navigator = Navigator.of(context);
-            final confirmed = await showAppModal<bool>(
-              context: context,
-              landscapeChild: const _NextConfirmationDialogContent(),
-              portraitChild: const _NextConfirmationBottomSheet(),
-            );
-            if (confirmed ?? false) {
+            // final confirmed = await showAppModal<bool>(
+            //   context: context,
+            //   landscapeChild: const _NextConfirmationDialogContent(),
+            //   portraitChild: const _NextConfirmationBottomSheet(),
+            // );
+            // if (confirmed ?? false) {
               unawaited(navigator.pushReplacement(SharePage.route()));
-            }
+            // }
           },
           child: Image.asset(
             'assets/icons/go_next_button_icon.png',

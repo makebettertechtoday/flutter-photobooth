@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_compositor/image_compositor.dart';
@@ -13,8 +14,10 @@ part 'share_event.dart';
 part 'share_state.dart';
 
 class ShareBloc extends Bloc<ShareEvent, ShareState> {
+  final PhotosRepository photosRepository;
+
   ShareBloc({
-    required PhotosRepository photosRepository,
+    required this.photosRepository,
     required this.imageId,
     required this.image,
     required this.assets,

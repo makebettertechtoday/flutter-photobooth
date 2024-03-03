@@ -53,12 +53,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAwrGoDm6syeESeWV1HApzDKZEomMEtR4U',
-    appId: '1:931695903758:web:33a07d199e97fa53f4a85f',
-    messagingSenderId: '931695903758',
-    projectId: 'io-photobooth-dev',
-    authDomain: 'io-photobooth-dev.firebaseapp.com',
-    storageBucket: 'io-photobooth-dev.appspot.com',
-    measurementId: 'G-F7PXP7CEE4',
+    apiKey: 'AIzaSyDEPEQmiZ0_UWDsDk0fkyVWuxKGZFnH3dY',
+    appId: '1:313890363446:web:84ef73f2936db383d36097',
+    messagingSenderId: '313890363446',
+    projectId: 'photobooth-b27d7',
+    authDomain: 'photobooth-b27d7.firebaseapp.com',
+    storageBucket: 'photobooth-b27d7.appspot.com',
+    measurementId: 'G-4WCZT9496W',
   );
 }

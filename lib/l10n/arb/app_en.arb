@@ -44,11 +44,11 @@
     "@footerPrivacyPolicyLinkText": {
         "description": "Text on the link shown on the footer which navigates to the Privacy Policy page."
     },
-    "sharePageHeading": "Share your photo with the community!",
+    "sharePageHeading": "Phone Number or Email",
     "@sharePageHeading": {
         "description": "Heading shown on the share page."
     },
-    "sharePageSubheading": "Share your photo with the community!",
+    "sharePageSubheading": "Phone Number or Email",
     "@sharePageSubheading": {
         "description": "Subheading shown on the share page."
     },
@@ -216,19 +216,19 @@
     "@charactersCaptionText": {
         "description": "Text displayed as a caption on the characters layout"
     },
-    "sharePageLearnMoreAboutTextPart1": "Learn more about ",
+    "sharePageLearnMoreAboutTextPart1": "We will send ",
     "@sharePageLearnMoreAboutTextPart1": {
         "description": "Part 1 text shown on the share page which mentions technologies used to build the app."
     },
-    "sharePageLearnMoreAboutTextPart2": " and ",
+    "sharePageLearnMoreAboutTextPart2": " you ",
     "@sharePageLearnMoreAboutTextPart2": {
         "description": "Part 2 text shown on the share page which mentions technologies used to build the app."
     },
-    "sharePageLearnMoreAboutTextPart3": " or dive right into the ",
+    "sharePageLearnMoreAboutTextPart3": " a link to ",
     "@sharePageLearnMoreAboutTextPart3": {
         "description": "Part 3 text shown on the share page which mentions technologies used to build the app."
     },
-    "sharePageLearnMoreAboutTextPart4": "open source code",
+    "sharePageLearnMoreAboutTextPart4": "label your photo",
     "@sharePageLearnMoreAboutTextPart4": {
         "description": "Part 4 text shown on the share page which mentions technologies used to build the app."
     },

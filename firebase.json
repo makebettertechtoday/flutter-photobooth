@@ -1,7 +1,7 @@
 {
   "hosting": {
     "public": "build/web",
-    "site": "io-photobooth-dev",
+    "site": "photobooth-b27d7",
     "cleanUrls": true,
     "trailingSlash": false,
     "ignore": [
