@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:cross_file/cross_file.dart';
 
 import 'package:analytics/analytics.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -113,7 +114,21 @@ class ShareBody extends StatelessWidget {
                             data: dataBytes,
                             shareText: 'Share it',
                           );
-                          // Do something with the `shareUrls`, if needed
+
+                          //Add information to database
+                          final firestore = FirebaseFirestore.instance;
+                          final CollectionReference photosCollection = firestore.collection('photos');
+                          // Document data to be added
+                          Map<String, dynamic> data = {
+                            'church_city': 'shelbyville',
+                            'church_name': 'st_joseph',
+                            'contact': textFieldValue,
+                            'file_name': fileName,
+                          };
+
+                          // Add document to the collection
+                          await photosCollection.add(data);
+
                         } catch (error) {
                           // Handle any errors that occur during the upload process
                           print('Error uploading photo: $error');
